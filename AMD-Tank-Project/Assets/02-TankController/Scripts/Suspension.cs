@@ -53,6 +53,13 @@ public class Suspension : MonoBehaviour
 			m_RB.AddForceAtPosition(springDir * force, m_Wheel.position, ForceMode.Acceleration);
         }
 
-		//to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
-	}
+        // Stop sliding
+        Vector3 localVelocity = transform.InverseTransformDirection(m_RB.linearVelocity);
+        float lateralVelocity = localVelocity.x; // Left/right velocity in local space
+        Vector3 lateralForce = -transform.right * lateralVelocity * 5.0f;
+
+        m_RB.AddForce(lateralForce, ForceMode.Acceleration);
+
+        //to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
+    }
 }
