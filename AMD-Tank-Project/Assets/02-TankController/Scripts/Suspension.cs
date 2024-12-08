@@ -53,10 +53,16 @@ public class Suspension : MonoBehaviour
 			m_RB.AddForceAtPosition(springDir * force, m_Wheel.position, ForceMode.Acceleration);
         }
 
+		if (m_Grounded != hit.collider)
+		{
+			m_Grounded = hit.collider;
+			OnGroundedChanged?.Invoke(m_Grounded);
+		}
+
         // Stop sliding
         Vector3 localVelocity = transform.InverseTransformDirection(m_RB.linearVelocity);
         float lateralVelocity = localVelocity.x; // Left/right velocity in local space
-        Vector3 lateralForce = -transform.right * lateralVelocity * 5.0f;
+        Vector3 lateralForce = -transform.right * lateralVelocity * 10.0f;
 
         m_RB.AddForce(lateralForce, ForceMode.Acceleration);
 
