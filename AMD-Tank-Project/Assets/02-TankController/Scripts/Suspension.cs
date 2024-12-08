@@ -11,7 +11,7 @@ public class Suspension : MonoBehaviour
 	[SerializeField] private Rigidbody m_RB;
 
 	private SuspensionSO m_Data;
-	private float m_SpringSize;
+	private float m_SpringRestingDistance;
 	private bool m_Grounded;
 
 	public void Init(SuspensionSO inData, Rigidbody _RBRef)
@@ -19,7 +19,7 @@ public class Suspension : MonoBehaviour
 		m_RB ??= _RBRef;
 		m_Data = inData;
 
-		m_SpringSize = (m_Data.WheelDiameter / 2f) + Mathf.Abs(m_Wheel.localPosition.y);
+		m_SpringRestingDistance = (m_Data.WheelDiameter / 2f) + Mathf.Abs(m_Wheel.localPosition.y);
 	}
 
 	public bool GetGrounded()
@@ -34,20 +34,23 @@ public class Suspension : MonoBehaviour
 		//TIP: the tank is the moving part of the spring not the floor, draw the diagram
 		//The tanks mass never changes either so is there any need to simulate forces in ForceMode.Force maybe ForceMode.Acceleration would keep the numbers smaller and easier to deal with????
 
-		Debug.DrawRay(transform.position, -transform.up.normalized * m_SpringSize, Color.blue);
+		Debug.DrawRay(transform.position, -transform.up.normalized * m_SpringRestingDistance, Color.blue);
 
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, -transform.up.normalized, out hit, m_SpringSize, m_Data.SuspensionLayermask))
+		if (Physics.Raycast(transform.position, -transform.up.normalized, out hit, m_SpringRestingDistance, m_Data.SuspensionLayermask))
 		{
-			Vector3 worldVel = m_RB.GetPointVelocity(transform.position);
+			m_Wheel.position = hit.point + (Vector3.up * (m_Data.WheelDiameter / 2f));
+			Vector3 springDir = m_Wheel.up;
 
-			float susOffset = m_SpringSize - hit.distance;
+			Vector3 tireWorldVel = m_RB.GetPointVelocity(m_Wheel.position);
 
-			float susVel = Mathf.Abs(Vector3.Dot(worldVel, (transform.localRotation * Vector3.down).normalized));
+			float offset = m_SpringRestingDistance - hit.distance;
 
-			float susForce = (susOffset * m_Data.SuspensionStrength) - (susVel * m_Data.SuspensionDamper);
+			float vel = Vector3.Dot(springDir, tireWorldVel);
 
-			m_RB.AddForceAtPosition(-(transform.localRotation * Vector3.down) * susForce, transform.position, ForceMode.Acceleration);
+			float force = (offset * m_Data.SuspensionStrength) - (vel * m_Data.SuspensionDamper);
+
+			m_RB.AddForceAtPosition(springDir * force, m_Wheel.position, ForceMode.Acceleration);
         }
 
 		//to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
