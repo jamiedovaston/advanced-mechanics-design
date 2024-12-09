@@ -11,4 +11,6 @@ public abstract class GameManagerBase : MonoBehaviour
     {
         OnInitialiseScene?.Invoke();
     }
+
+
 }
