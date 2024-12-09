@@ -24,10 +24,10 @@ public class TankController : MonoBehaviour
 
 	private void Awake()
 	{
-		m_ActionMap = new AM_02Tank();
-
 		m_RB ??= GetComponent<Rigidbody>();
+
 		m_CameraController ??= GetComponent<CameraController>();
+		m_CameraController.Init();
 
 		m_TurretController ??= GetComponent<Turret>();
 		m_TurretController.Init(m_Data);
@@ -36,6 +36,12 @@ public class TankController : MonoBehaviour
 		{
 			wheel.Init(m_Data, m_RB);
 		}
+	}
+
+	public void Init(AM_02Tank _actionMap, TankSO _data)
+	{
+		m_ActionMap = _actionMap;
+		m_Data = _data;
 	}
 
 	private void OnEnable()
@@ -140,4 +146,45 @@ public class TankController : MonoBehaviour
 		m_CameraController.ChangeCameraDistance(context.ReadValue<float>());
 		m_TurretController.SetRotationDirty();
 	}
+}
+
+public class Tank : Entity
+{
+    private TankSO m_Data;
+
+    [Header("Property Display")]
+	[SerializeField] private Rigidbody m_RB;
+	[SerializeField] private CameraController m_CameraController;
+	[SerializeField] private Turret m_TurretController;
+	[SerializeField] private Barrel m_BarrelController;
+	[SerializeField] private DriveWheel[] m_DriveWheels;
+
+	private float m_InAccelerate;
+
+	private float m_InSteer;
+	private bool m_IsSteering;
+	private Coroutine m_CRSteer;
+
+	private bool m_IsFiring;
+
+    private void Awake()
+    {
+        m_RB ??= GetComponent<Rigidbody>();
+
+        m_CameraController ??= GetComponent<CameraController>();
+        m_CameraController.Init();
+
+        m_TurretController ??= GetComponent<Turret>();
+        m_TurretController.Init(m_Data);
+    }
+
+	public void Init(TankSO _data)
+	{
+        m_Data = _data;
+	}
+}
+
+public class Entity : MonoBehaviour
+{
+	//HEALTH AND GENERIC SYSTEMS HERE
 }

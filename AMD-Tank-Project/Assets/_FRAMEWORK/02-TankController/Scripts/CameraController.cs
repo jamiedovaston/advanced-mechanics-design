@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,12 @@ public class CameraController : MonoBehaviour
 
 	[SerializeField] private Vector3 m_TargetOffset;
 
-	public void RotateSpringArm(Vector2 change)
+    public void Init()
+    {
+		m_SpringArmKnuckle.SetParent(transform);
+    }
+
+    public void RotateSpringArm(Vector2 change)
 	{
 		//Break the problem down into 2; yaw and pitch
 		//yaw is dealt with first and is the world y rotation

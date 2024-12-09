@@ -14,11 +14,8 @@ public class DriveWheel : MonoBehaviour
 	private bool m_Grounded;
 
 	private float m_Acceleration;
-	public void SetAcceleration(float amount)
-	{
-		Debug.Log($"Acceleration set to: {amount}");
+	public void SetAcceleration(float amount) =>
 		m_Acceleration = amount;
-	}
 
 	public void Init(TankSO inData, Rigidbody _RBRef)
 	{
