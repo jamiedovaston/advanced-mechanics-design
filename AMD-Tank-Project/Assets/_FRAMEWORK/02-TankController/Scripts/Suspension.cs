@@ -34,6 +34,8 @@ public class Suspension : MonoBehaviour
 		//TIP: the tank is the moving part of the spring not the floor, draw the diagram
 		//The tanks mass never changes either so is there any need to simulate forces in ForceMode.Force maybe ForceMode.Acceleration would keep the numbers smaller and easier to deal with????
 
+		if (m_Data == null) return;
+
 		Debug.DrawRay(transform.position, -transform.up.normalized * m_SpringRestingDistance, Color.blue);
 
 		RaycastHit hit;

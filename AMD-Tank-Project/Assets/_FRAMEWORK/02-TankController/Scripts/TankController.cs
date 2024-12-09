@@ -1,190 +1,108 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankController : MonoBehaviour
 {
 	private AM_02Tank m_ActionMap; //input
-	[SerializeField] private TankSO m_Data; //type object link
-											//Component links
-	[Header("Property Display")]
-	[SerializeField] private Rigidbody m_RB;
-	[SerializeField] private CameraController m_CameraController;
-	[SerializeField] private Turret m_TurretController;
-	[SerializeField] private Barrel m_BarrelController;
-	[SerializeField] private DriveWheel[] m_DriveWheels;
+	private TankSO m_Data;
+    private CameraController m_CameraController;
 
+	private IPossessable m_Tank;
+
+	//type object link
+	//Component links
 	private float m_InAccelerate;
-
 	private float m_InSteer;
 	private bool m_IsSteering;
 	private Coroutine m_CRSteer;
-
 	private bool m_IsFiring;
 
-	private void Awake()
-	{
-		m_RB ??= GetComponent<Rigidbody>();
-
-		m_CameraController ??= GetComponent<CameraController>();
-		m_CameraController.Init();
-
-		m_TurretController ??= GetComponent<Turret>();
-		m_TurretController.Init(m_Data);
-
-		foreach (DriveWheel wheel in m_DriveWheels)
-		{
-			wheel.Init(m_Data, m_RB);
-		}
-	}
-
-	public void Init(AM_02Tank _actionMap, TankSO _data)
+    public void Init(AM_02Tank _actionMap, TankSO _data)
 	{
 		m_ActionMap = _actionMap;
 		m_Data = _data;
-	}
 
-	private void OnEnable()
+        //m_CameraController ??= GetComponent<CameraController>();
+        //m_CameraController.Init();
+
+        m_ActionMap.Enable();
+
+        m_ActionMap.Default.Accelerate.performed += Handle_AcceleratePerformed;
+        m_ActionMap.Default.Accelerate.canceled += Handle_AccelerateCanceled;
+        m_ActionMap.Default.Steer.performed += Handle_SteerPerformed;
+        m_ActionMap.Default.Steer.canceled += Handle_SteerCanceled;
+        m_ActionMap.Default.Fire.performed += Handle_FirePerformed;
+        m_ActionMap.Default.Fire.canceled += Handle_FireCanceled;
+        m_ActionMap.Default.Aim.performed += Handle_AimPerformed;
+        m_ActionMap.Default.Zoom.performed += Handle_ZoomPerformed;
+    }
+
+	public void Possess(IPossessable _possessable)
 	{
-		m_ActionMap.Enable();
-
-		m_ActionMap.Default.Accelerate.performed += Handle_AcceleratePerformed;
-		m_ActionMap.Default.Accelerate.canceled += Handle_AccelerateCanceled;
-		m_ActionMap.Default.Steer.performed += Handle_SteerPerformed;
-		m_ActionMap.Default.Steer.canceled += Handle_SteerCanceled;
-		m_ActionMap.Default.Fire.performed += Handle_FirePerformed;
-		m_ActionMap.Default.Fire.canceled += Handle_FireCanceled;
-		m_ActionMap.Default.Aim.performed += Handle_AimPerformed;
-		m_ActionMap.Default.Zoom.performed += Handle_ZoomPerformed;
+		m_Tank = _possessable;
+        _possessable.Init(m_Data);
 	}
 
-	private void OnDisable()
+	public void UnPossess()
 	{
-		m_ActionMap.Disable();
-
-		m_ActionMap.Default.Accelerate.performed -= Handle_AcceleratePerformed;
-		m_ActionMap.Default.Accelerate.canceled -= Handle_AccelerateCanceled;
-		m_ActionMap.Default.Steer.performed -= Handle_SteerPerformed;
-		m_ActionMap.Default.Steer.canceled -= Handle_SteerCanceled;
-		m_ActionMap.Default.Fire.performed -= Handle_FirePerformed;
-		m_ActionMap.Default.Fire.canceled -= Handle_FireCanceled;
-		m_ActionMap.Default.Aim.performed -= Handle_AimPerformed;
-		m_ActionMap.Default.Zoom.performed -= Handle_ZoomPerformed;
+        m_Tank = null;
 	}
 
-	private void Handle_AcceleratePerformed(InputAction.CallbackContext context)
+    private void OnDisable()
+    {
+        m_ActionMap.Disable();
+
+        m_ActionMap.Default.Accelerate.performed -= Handle_AcceleratePerformed;
+        m_ActionMap.Default.Accelerate.canceled -= Handle_AccelerateCanceled;
+        m_ActionMap.Default.Steer.performed -= Handle_SteerPerformed;
+        m_ActionMap.Default.Steer.canceled -= Handle_SteerCanceled;
+        m_ActionMap.Default.Fire.performed -= Handle_FirePerformed;
+        m_ActionMap.Default.Fire.canceled -= Handle_FireCanceled;
+        m_ActionMap.Default.Aim.performed -= Handle_AimPerformed;
+        m_ActionMap.Default.Zoom.performed -= Handle_ZoomPerformed;
+    }
+
+    private void Handle_AcceleratePerformed(InputAction.CallbackContext context)
 	{
-		m_InAccelerate = context.ReadValue<float>();
-		foreach (DriveWheel wheel in m_DriveWheels)
-		{
-			wheel.SetAcceleration(m_InAccelerate);
-		}
-		m_TurretController.SetRotationDirty();
+		m_Tank?.Accelerate(context.ReadValue<float>());
 	}
+
 	private void Handle_AccelerateCanceled(InputAction.CallbackContext context)
 	{
-		m_InAccelerate = context.ReadValue<float>();
-		foreach (DriveWheel wheel in m_DriveWheels)
-		{
-			wheel.SetAcceleration(m_InAccelerate);
-		}
-		m_TurretController.SetRotationDirty();
-	}
+        m_Tank?.Accelerate(context.ReadValue<float>());
+    }
 
-	private void Handle_SteerPerformed(InputAction.CallbackContext context)
+    private void Handle_SteerPerformed(InputAction.CallbackContext context)
 	{
-		m_InSteer = context.ReadValue<float>();
-
-		if (m_IsSteering) return;
-
-		m_IsSteering = true;
-
-		m_CRSteer = StartCoroutine(C_SteerUpdate());
+		m_Tank?.Steer(context.ReadValue<float>(), true);
 	}
 
 	private void Handle_SteerCanceled(InputAction.CallbackContext context)
 	{
-		m_InSteer = context.ReadValue<float>();
+        m_Tank?.Steer(context.ReadValue<float>(), false);
+    }
 
-		if (!m_IsSteering) return;
-
-		m_IsSteering = false;
-
-		StopCoroutine(m_CRSteer);
-	}
-
-	private IEnumerator C_SteerUpdate()
+    private void Handle_FirePerformed(InputAction.CallbackContext context)
 	{
-		while (m_IsSteering)
-		{
-			// you could do a simple steering here with a transform.rotate
-			// or you can delete this coroutine and work out how to pass the steering value to each drivewheel as a positive or negative number to make the tank spin
-			yield return null;
-		}
-	}
-
-	private void Handle_FirePerformed(InputAction.CallbackContext context)
-	{
-		m_IsFiring = true;
-		m_BarrelController.Fire();
+		m_Tank?.Fire(true);
 	}
 
 	private void Handle_FireCanceled(InputAction.CallbackContext context)
 	{
-		m_IsFiring = false;
-		//this is here in the case you want to expand to support magazine style auto-loaders but thats large scope
-	}
+		m_Tank?.Fire(false);
+    }
 
 	private void Handle_AimPerformed(InputAction.CallbackContext context)
 	{
-		m_CameraController.RotateSpringArm(context.ReadValue<Vector2>());
-		m_TurretController.SetRotationDirty();
+        // FRAMEWORK IMPLEMENTATION
+        // m_CameraController.RotateSpringArm(context.ReadValue<Vector2>());
+        m_Tank?.Aim();
 	}
 
 	private void Handle_ZoomPerformed(InputAction.CallbackContext context)
 	{
-		m_CameraController.ChangeCameraDistance(context.ReadValue<float>());
-		m_TurretController.SetRotationDirty();
+		// FRAMEWORK IMPLEMENTATION
+		// m_CameraController.ChangeCameraDistance(context.ReadValue<float>());
+		m_Tank?.Zoom();
 	}
-}
-
-public class Tank : Entity
-{
-    private TankSO m_Data;
-
-    [Header("Property Display")]
-	[SerializeField] private Rigidbody m_RB;
-	[SerializeField] private CameraController m_CameraController;
-	[SerializeField] private Turret m_TurretController;
-	[SerializeField] private Barrel m_BarrelController;
-	[SerializeField] private DriveWheel[] m_DriveWheels;
-
-	private float m_InAccelerate;
-
-	private float m_InSteer;
-	private bool m_IsSteering;
-	private Coroutine m_CRSteer;
-
-	private bool m_IsFiring;
-
-    private void Awake()
-    {
-        m_RB ??= GetComponent<Rigidbody>();
-
-        m_CameraController ??= GetComponent<CameraController>();
-        m_CameraController.Init();
-
-        m_TurretController ??= GetComponent<Turret>();
-        m_TurretController.Init(m_Data);
-    }
-
-	public void Init(TankSO _data)
-	{
-        m_Data = _data;
-	}
-}
-
-public class Entity : MonoBehaviour
-{
-	//HEALTH AND GENERIC SYSTEMS HERE
 }
