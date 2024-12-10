@@ -799,6 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577714982}
+  - component: {fileID: 577714983}
   m_Layer: 0
   m_Name: CameraSpringArmKnuckle
   m_TagString: Untagged
@@ -822,6 +823,23 @@ Transform:
   - {fileID: 114474679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577714983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577714981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9981a05f0e51a3047a7b4aaae99dc06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpringArmKnuckle: {fileID: 577714982}
+  m_CameraMount: {fileID: 114474679}
+  m_Camera: {fileID: 880163267}
+  m_Data: {fileID: 11400000, guid: 0cbe95f8684787643be0124fc6b8eaf0, type: 2}
+  m_TargetOffset: {x: 0, y: 4, z: 0}
 --- !u!1 &739941655
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TankData: {fileID: 11400000, guid: 116859067924452438fe04169eb456aa, type: 2}
   tankController: {fileID: 739941658}
-  cameraController: {fileID: 0}
+  cameraController: {fileID: 577714983}
 --- !u!114 &739941658
 MonoBehaviour:
   m_ObjectHideFlags: 0

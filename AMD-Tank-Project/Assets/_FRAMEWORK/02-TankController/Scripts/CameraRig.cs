@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraRig : MonoBehaviour
 {
 	[SerializeField] private Transform m_SpringArmKnuckle;
 	[SerializeField] private Transform m_CameraMount;
@@ -13,11 +13,6 @@ public class CameraController : MonoBehaviour
 	private float m_CameraDist = 5f;
 
 	[SerializeField] private Vector3 m_TargetOffset;
-
-    public void Init()
-    {
-		m_SpringArmKnuckle.SetParent(transform);
-    }
 
     public void RotateSpringArm(Vector2 change)
 	{
@@ -44,4 +39,9 @@ public class CameraController : MonoBehaviour
 
 		//Expand here by using a sphere trace from the tank backwards to see if the camera needs to move forward, out the way of geometry
 	}
+
+    internal void Control(IPossessable possessable)
+    {
+		m_SpringArmKnuckle.SetParent(possessable.GetTransform());
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +6,7 @@ public class TankController : MonoBehaviour
 {
 	private AM_02Tank m_ActionMap; //input
 	private TankSO m_Data;
-    private CameraController m_CameraController;
+    private CameraRig m_CameraController;
 
 	private IPossessable m_Tank;
 
@@ -105,4 +106,9 @@ public class TankController : MonoBehaviour
 		// m_CameraController.ChangeCameraDistance(context.ReadValue<float>());
 		m_Tank?.Zoom();
 	}
+
+    public IPossessable GetPossessed()
+    {
+		return m_Tank;
+    }
 }

@@ -1,4 +1,6 @@
-﻿public interface IPossessable
+﻿using UnityEngine;
+
+public interface IPossessable
 {
     public void Init(TankSO _data);
 
@@ -7,4 +9,6 @@
 	public void Fire(bool _isFiring);
 	public void Aim();
 	public void Zoom();
+
+    public Transform GetTransform();
 }

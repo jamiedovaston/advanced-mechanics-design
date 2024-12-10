@@ -85,4 +85,6 @@ public class Tank : Entity, IPossessable
             yield return null;
         }
     }
+
+    public Transform GetTransform() => transform;
 }
