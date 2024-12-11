@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class DriveWheel : MonoBehaviour
@@ -64,16 +66,17 @@ public class DriveWheel : MonoBehaviour
         Vector3 forcePosition = Vector3.zero;
         Vector3 force = Vector3.zero;
 
-        float acceleration = m_Data.EngineData.HorsePower / m_Data.Mass_Tons;
+		float mass = m_Data.Mass_Tons * 1000;
+        float acceleration = Mathf.Sqrt(m_Data.EngineData.HorsePower * 745.6992f) / (2 * mass * Time.fixedDeltaTime);
         float traction = (float)m_NumGroundedWheels / (float)m_SuspensionWheels.Length;
 
         force = ((m_RB.transform.forward * m_Acceleration) * acceleration) * traction;
 
         m_RB?.AddForce(force, ForceMode.Acceleration);
 
-        if (m_RB.linearVelocity.magnitude > 24.0f)
+        if (m_RB.linearVelocity.magnitude > 10.0f)
         {
-            m_RB.linearVelocity = m_RB.linearVelocity.normalized * 24;
+            m_RB.linearVelocity = m_RB.linearVelocity.normalized * 10.0f;
         }
     }
 }

@@ -34,7 +34,7 @@ public class Suspension : MonoBehaviour
 		//TIP: the tank is the moving part of the spring not the floor, draw the diagram
 		//The tanks mass never changes either so is there any need to simulate forces in ForceMode.Force maybe ForceMode.Acceleration would keep the numbers smaller and easier to deal with????
 
-		if (m_Data == null) return;
+		Debug.Assert(m_Data != null, $"Data asset missing from suspension! ({this})");
 
 		Debug.DrawRay(transform.position, -transform.up.normalized * m_SpringRestingDistance, Color.blue);
 
@@ -63,11 +63,21 @@ public class Suspension : MonoBehaviour
 
         // Stop sliding
         Vector3 localVelocity = transform.InverseTransformDirection(m_RB.linearVelocity);
-        float lateralVelocity = localVelocity.x; // Left/right velocity in local space
+        float lateralVelocity = localVelocity.x;
         Vector3 lateralForce = -transform.right * lateralVelocity * 10.0f;
 
-        m_RB.AddForce(lateralForce, ForceMode.Acceleration);
+        m_RB.AddForceAtPosition(lateralForce, m_Wheel.position, ForceMode.Acceleration);
 
-        //to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
-    }
+
+		// float normalAngle = Vector3.Angle(hit.normal, Vector3.up);
+		// if (normalAngle > m_Data.MaximumSlope)
+		// {
+		//     float normalForce = m_RB.mass * 9.8f * Mathf.Cos(normalAngle * Mathf.Deg2Rad);
+		// 	float frictionForce = 0.252f * normalForce;
+		// 	Vector3 friction = -m_RB.linearVelocity.normalized * frictionForce;
+		// 	m_RB?.AddForceAtPosition(friction, m_Wheel.position, ForceMode.Force);
+		// }
+
+		//to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
+	}
 }
