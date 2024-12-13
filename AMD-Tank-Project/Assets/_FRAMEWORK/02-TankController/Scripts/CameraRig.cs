@@ -40,7 +40,7 @@ public class CameraRig : MonoBehaviour
 		//Expand here by using a sphere trace from the tank backwards to see if the camera needs to move forward, out the way of geometry
 	}
 
-    internal void Control(IPossessable possessable)
+    public void Control(IPossessable possessable)
     {
 		m_SpringArmKnuckle.SetParent(possessable.GetTransform());
     }
