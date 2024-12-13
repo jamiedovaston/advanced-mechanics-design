@@ -72,6 +72,14 @@ public class DriveWheel : MonoBehaviour
 
         force = ((m_RB.transform.forward * m_Acceleration) * acceleration) * traction;
 
+		Vector3 drivePosition = Vector3.zero;
+
+		//foreach(Suspension s in m_SuspensionWheels)
+		//{
+		//	if(s.GetGrounded())
+		//		drivePosition += s.transform.position;
+		//}
+
         m_RB?.AddForce(force, ForceMode.Acceleration);
 
         if (m_RB.linearVelocity.magnitude > 10.0f)
