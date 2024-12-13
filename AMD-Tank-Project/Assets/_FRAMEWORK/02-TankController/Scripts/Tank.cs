@@ -5,9 +5,10 @@ public class Tank : Entity, IPossessable
 {
     private TankSO m_Data;
 
-    [Header("Property Display")]
 	private Rigidbody m_RB;
 	private Turret m_TurretController;
+
+    [Header("Property Display")]
 	[SerializeField] private Barrel m_BarrelController;
 	[SerializeField] private DriveWheel[] m_DriveWheels;
 

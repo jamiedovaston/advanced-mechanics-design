@@ -66,21 +66,14 @@ public class DriveWheel : MonoBehaviour
         Vector3 forcePosition = Vector3.zero;
         Vector3 force = Vector3.zero;
 
-		float mass = m_Data.Mass_Tons * 1000;
-        float acceleration = Mathf.Sqrt(m_Data.EngineData.HorsePower * 745.6992f) / (2 * mass * Time.fixedDeltaTime);
+		float tankForward = Vector3.Dot(m_RB.GetPointVelocity(transform.position), transform.forward);
+
+        float acceleration = (m_Data.EngineData.HorsePower * 0.7456992f) / (m_Data.Mass_Tons * Mathf.Max(Mathf.Abs(tankForward), 1));
         float traction = (float)m_NumGroundedWheels / (float)m_SuspensionWheels.Length;
 
-        force = ((m_RB.transform.forward * m_Acceleration) * acceleration) * traction;
+		force = ((m_RB.transform.forward * m_Acceleration) * acceleration) * traction;
 
-		Vector3 drivePosition = Vector3.zero;
-
-		//foreach(Suspension s in m_SuspensionWheels)
-		//{
-		//	if(s.GetGrounded())
-		//		drivePosition += s.transform.position;
-		//}
-
-        m_RB?.AddForce(force, ForceMode.Acceleration);
+        m_RB?.AddForceAtPosition(force, transform.position, ForceMode.Acceleration);
 
         if (m_RB.linearVelocity.magnitude > 10.0f)
         {

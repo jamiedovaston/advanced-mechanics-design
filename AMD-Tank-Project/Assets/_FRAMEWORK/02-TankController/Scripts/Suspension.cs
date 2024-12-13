@@ -48,8 +48,10 @@ public class Suspension : MonoBehaviour
 
 			float offset = m_SpringRestingDistance - hit.distance;
 			float vel = Vector3.Dot(springDir, tireWorldVel);
+			float slipVel = Vector3.Dot(tireWorldVel, transform.right);
+			float slipForce = slipVel * -0.9f;
 			float force = (offset * m_Data.SuspensionStrength) - (vel * m_Data.SuspensionDamper);
-			m_RB.AddForceAtPosition(springDir * force, m_Wheel.position, ForceMode.Acceleration);
+			m_RB.AddForceAtPosition((springDir * force) + (transform.right * slipForce), m_Wheel.position, ForceMode.Acceleration);
 		}
 
 		if (m_Grounded != hit.collider)
@@ -58,23 +60,27 @@ public class Suspension : MonoBehaviour
 			OnGroundedChanged?.Invoke(m_Grounded);
 		}
 
-		// Stop sliding
-		Vector3 localVelocity = transform.InverseTransformDirection(m_RB.linearVelocity);
-		float lateralVelocity = localVelocity.x;
-		Vector3 lateralForce = -transform.right * lateralVelocity * 10.0f;
-
-		m_RB.AddForceAtPosition(lateralForce, m_Wheel.position, ForceMode.Acceleration);
+		//// Stop sliding
+		// Vector3 localVelocity = transform.InverseTransformDirection(m_RB.linearVelocity);
+		// float lateralVelocity = localVelocity.x;
+		// Vector3 lateralForce = -transform.right * lateralVelocity * 10.0f;
+		 
+		// m_RB.AddForceAtPosition(lateralForce, m_Wheel.position, ForceMode.Acceleration);
 
         //Friction
-        //float FloorAngle = Vector3.Angle(hit.normal, Vector3.up);
-        //if (FloorAngle < m_Data.MaximumSlope)
-        //{
-        //    float ObjectDownForce = 9.8f * m_RB.mass * Mathf.Cos(FloorAngle * Mathf.Deg2Rad);
-        //    float FrictionForce = m_Data.FrictionCoefficient * ObjectDownForce;
-        //    Vector3 Friction = -m_RB.linearVelocity.normalized * FrictionForce;
+		//if(m_Grounded)
+		//{
+		//	float floorAngle = Vector3.Angle(hit.normal, Vector3.up);
+		//	if (floorAngle < m_Data.MaximumSlope)
+		//	{
+		//		float objectDownForce = 9.8f * m_RB.mass * Mathf.Cos(floorAngle * Mathf.Deg2Rad);
+		//		float frictionForce = m_Data.FrictionCoefficient * objectDownForce;
+		//		Vector3 friction = -m_RB.linearVelocity.normalized * frictionForce;
 		//
-        //    m_RB?.AddForceAtPosition(Friction, transform.position, ForceMode.Force);
-        //}
+		//		m_RB?.AddForceAtPosition(friction, transform.position, ForceMode.Force);
+		//	}
+		//}
 
-    }
+		//to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
+	}
 }
