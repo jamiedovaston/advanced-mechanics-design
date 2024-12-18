@@ -306,6 +306,7 @@ MonoBehaviour:
   - {fileID: 66072299864505448}
   - {fileID: 5671649214385104314}
   - {fileID: 1263363190836741040}
+  m_SteerWeighting: 1
 --- !u!1 &2518504668057014058
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,8 +827,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.78, y: 0.7632893, z: 3}
-  m_Center: {x: 0, y: 1.1583554, z: 1.03605885e-14}
+  m_Size: {x: 1.78, y: 0.46486914, z: 3}
+  m_Center: {x: 0, y: 1.3075655, z: -6.97409e-15}
 --- !u!1 &5521952513867549804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1833,7 @@ MonoBehaviour:
   - {fileID: 6659066565606074627}
   - {fileID: 8518157418162256023}
   - {fileID: 6232715193483686919}
+  m_SteerWeighting: -1
 --- !u!1 &9197850456455204883
 GameObject:
   m_ObjectHideFlags: 0

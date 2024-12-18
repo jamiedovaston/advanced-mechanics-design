@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/StyleSheet.uss?fileID=7433441132597879392&amp;guid=b4fca07c50b6be342a5452849a53145a&amp;type=3#StyleSheet" />
+    <ui:VisualElement name="page" style="flex-grow: 1;">
+        <ui:VisualElement name="menu">
+            <ui:Label text="Main Menu" name="menu-title" style="-unity-font-style: bold;" />
+            <ui:VisualElement name="button-container" style="flex-grow: 1;">
+                <ui:Button text="Play" name="play-button" />
+                <ui:Button text="Settings" name="settings-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

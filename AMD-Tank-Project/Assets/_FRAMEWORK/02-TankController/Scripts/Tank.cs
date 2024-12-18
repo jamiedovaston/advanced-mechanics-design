@@ -4,8 +4,9 @@ using UnityEngine;
 public class Tank : Entity, IPossessable
 {
     private TankSO m_Data;
+    private CameraRig m_Rig;
 
-	private Rigidbody m_RB;
+    private Rigidbody m_RB;
 	private Turret m_TurretController;
 
     [Header("Property Display")]
@@ -26,9 +27,10 @@ public class Tank : Entity, IPossessable
         m_TurretController ??= GetComponent<Turret>();
     }
 
-	public void Init(TankSO _data)
+    public void Init(TankSO _data, CameraRig _rig)
 	{
         m_Data = _data;
+        m_Rig = _rig;
 
         foreach (DriveWheel wheel in m_DriveWheels)
         {
@@ -49,6 +51,9 @@ public class Tank : Entity, IPossessable
 
     public void Steer(float _inSteer, bool _isSteering)
     {
+        Debug.Log($"In Steer: {_inSteer}");
+        m_InSteer = _inSteer;
+
         if (m_IsSteering == _isSteering) return;
 
         m_IsSteering = _isSteering;
@@ -81,9 +86,17 @@ public class Tank : Entity, IPossessable
     {
         while (m_IsSteering)
         {
-            // you could do a simple steering here with a transform.rotate
-            // or you can delete this coroutine and work out how to pass the steering value to each drivewheel as a positive or negative number to make the tank spin
+            for (int i = 0; i < m_DriveWheels.Length; i++)
+            {
+                m_DriveWheels[i].SetSteer(m_InSteer);
+            }
+
             yield return null;
+        }
+
+        for (int i = 0; i < m_DriveWheels.Length; i++)
+        {
+            m_DriveWheels[i].SetSteer(0.0f);
         }
     }
 

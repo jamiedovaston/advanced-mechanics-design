@@ -6,7 +6,7 @@ public class TankController : MonoBehaviour
 {
 	private AM_02Tank m_ActionMap; //input
 	private TankSO m_Data;
-    private CameraRig m_CameraController;
+    private CameraRig m_Rig;
 
 	private IPossessable m_Tank;
 
@@ -18,13 +18,11 @@ public class TankController : MonoBehaviour
 	private Coroutine m_CRSteer;
 	private bool m_IsFiring;
 
-    public void Init(AM_02Tank _actionMap, TankSO _data)
+    public void Init(AM_02Tank _actionMap, TankSO _data, CameraRig _rig)
 	{
 		m_ActionMap = _actionMap;
 		m_Data = _data;
-
-        //m_CameraController ??= GetComponent<CameraController>();
-        //m_CameraController.Init();
+		m_Rig = _rig;
 
         m_ActionMap.Enable();
 
@@ -41,7 +39,9 @@ public class TankController : MonoBehaviour
 	public void Possess(IPossessable _possessable)
 	{
 		m_Tank = _possessable;
-        _possessable.Init(m_Data);
+        _possessable.Init(m_Data, m_Rig);
+
+		m_Rig.AttachToTarget(_possessable.GetTransform());
 	}
 
 	public void UnPossess()
@@ -94,16 +94,15 @@ public class TankController : MonoBehaviour
     }
 
 	private void Handle_AimPerformed(InputAction.CallbackContext context)
-	{
-        // FRAMEWORK IMPLEMENTATION
-        // m_CameraController.RotateSpringArm(context.ReadValue<Vector2>());
+    {
+		m_Rig.RotateSpringArm(context.ReadValue<Vector2>());
         m_Tank?.Aim();
 	}
 
 	private void Handle_ZoomPerformed(InputAction.CallbackContext context)
 	{
 		// FRAMEWORK IMPLEMENTATION
-		// m_CameraController.ChangeCameraDistance(context.ReadValue<float>());
+		// m_Rig.ChangeCameraDistance(context.ReadValue<float>());
 		m_Tank?.Zoom();
 	}
 

@@ -15,9 +15,9 @@ public class TankGameManager : GameManagerBase
 
         m_ActionMap = new AM_02Tank();
 
-        tankController.Init(m_ActionMap, m_TankData);
+        tankController.Init(m_ActionMap, m_TankData, cameraController);
         tankController.Possess(Instantiate(Resources.Load<Tank>("Tank"), TankSpawner.GetPrimarySpawner().GetPosition(), Quaternion.identity));
 
-        cameraController.Control(tankController.GetPossessed());
+        // cameraController.Control(tankController.GetPossessed());
     }
 }

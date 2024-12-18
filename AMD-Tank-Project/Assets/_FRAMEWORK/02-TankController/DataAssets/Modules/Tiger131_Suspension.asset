@@ -20,4 +20,4 @@ MonoBehaviour:
     m_Bits: 1
   MaximumSlope: 30
   HullTraverseDegrees: 27
-  FrictionCoefficient: 0.252
+  FrictionCoefficient: 0.1

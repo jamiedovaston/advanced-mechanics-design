@@ -17,10 +17,17 @@ public class DriveWheel : MonoBehaviour
 	private bool m_Grounded;
 
 	private float m_Acceleration;
+
+	//DEBUG
+	public float m_SteerWeighting;
+	private float m_Steer;
+
 	public void SetAcceleration(float amount) =>
 		m_Acceleration = amount;
+    public void SetSteer(float amount) =>
+        m_Steer = amount;
 
-	public void Init(TankSO inData, Rigidbody _RBRef)
+    public void Init(TankSO inData, Rigidbody _RBRef)
 	{
 		m_Data = inData;
 		m_RB ??= _RBRef;
@@ -48,22 +55,10 @@ public class DriveWheel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*
-		// Ensure correct ground percentage calculation
-		float groundPercent = (float)m_NumGroundedWheels / m_SuspensionWheels.Length;
-		// Calculate forward force
-		float forwardForce = m_Acceleration * m_Data.EngineData.HorsePower * groundPercent; 
-		//Create force vector 
-		Vector3 force = transform.forward * forwardForce; 
-		// Apply force to rigidbody
-		m_RB.AddForceAtPosition(force, transform.position, ForceMode.Acceleration);
-        // Limit angular velocity to prevent uncontrollable spinning
-		m_RB.angularVelocity = Vector3.ClampMagnitude(m_RB.angularVelocity, 10.0f);*/
-
-        if (m_NumGroundedWheels == 0 || m_Acceleration == 0)
+		if (m_NumGroundedWheels == 0 || (m_Acceleration == 0 && m_Steer == 0))
             return;
 
-        Vector3 forcePosition = Vector3.zero;
+        Vector3 steerForce = Vector3.zero;
         Vector3 force = Vector3.zero;
 
 		float tankForward = Vector3.Dot(m_RB.GetPointVelocity(transform.position), transform.forward);
@@ -71,9 +66,10 @@ public class DriveWheel : MonoBehaviour
         float acceleration = (m_Data.EngineData.HorsePower * 0.7456992f) / (m_Data.Mass_Tons * Mathf.Max(Mathf.Abs(tankForward), 1));
         float traction = (float)m_NumGroundedWheels / (float)m_SuspensionWheels.Length;
 
-		force = ((m_RB.transform.forward * m_Acceleration) * acceleration) * traction;
+		force = ((transform.forward *  m_Acceleration) * acceleration) * traction;
+		steerForce = (transform.forward * ((m_Steer * -m_SteerWeighting) + 1.0f));
 
-        m_RB?.AddForceAtPosition(force, transform.position, ForceMode.Acceleration);
+        m_RB?.AddForceAtPosition(force + steerForce, transform.position, ForceMode.Acceleration);
 
         if (m_RB.linearVelocity.magnitude > 10.0f)
         {
