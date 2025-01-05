@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/week2/demo-runtime-change/ui/runtimeChangeExample.uss?fileID=7433441132597879392&amp;guid=c7e680fa9baacba458085392d1e05a7a&amp;type=3#runtimeChangeExample" />
+    <ui:VisualElement name="main" style="flex-grow: 1;">
+        <ui:VisualElement name="centre-box">
+            <ui:Label text="DEAD" name="dead-label" />
+            <ui:Label text="Run-time element modification example" name="header" />
+            <ui:Label text="In this example, press the Space bar to decrement your lives." name="description" />
+            <ui:VisualElement name="container">
+                <ui:VisualElement name="hearts">
+                    <ui:VisualElement name="heart-1" class="heart" />
+                    <ui:VisualElement name="heart-2" class="heart"/>
+                    <ui:VisualElement name="heart-3" class="heart"/>
+                    <ui:VisualElement name="heart-4" class="heart"/>
+                    <ui:VisualElement name="heart-5" class="heart"/>
+                    <ui:VisualElement name="heart-6" class="heart"/>
+                    <ui:VisualElement name="heart-7" class="heart"/>
+                    <ui:VisualElement name="heart-8" class="heart"/>
+                    <ui:VisualElement name="heart-9" class="heart"/>
+                    <ui:VisualElement name="heart-10" class="heart" />
+                </ui:VisualElement>    
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

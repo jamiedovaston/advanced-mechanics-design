@@ -11,4 +11,5 @@ public class CameraSO : ScriptableObject
 	public float MaxDist;
 	public float MinDist;
 	public float CameraProbeSize;
+	public LayerMask InteractLayers;
 }

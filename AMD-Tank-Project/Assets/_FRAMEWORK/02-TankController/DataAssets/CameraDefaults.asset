@@ -16,7 +16,10 @@ MonoBehaviour:
   PitchSensitivity: 0.1
   ZoomSensitivity: 1
   MaxPitch: 90
-  MinPitch: -90
+  MinPitch: -25
   MaxDist: 10
-  MinDist: 1
+  MinDist: 2.5
   CameraProbeSize: 0.5
+  InteractLayers:
+    serializedVersion: 2
+    m_Bits: 55

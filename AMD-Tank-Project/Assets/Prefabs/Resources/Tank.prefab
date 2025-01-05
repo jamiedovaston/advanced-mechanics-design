@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8336461130897384259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrackR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4940568768775016087}
   - component: {fileID: 6232715193483686919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5054994205871878381}
   - component: {fileID: 5729215588061489534}
   - component: {fileID: 8200490252868454755}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tensioner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 528798512863066028}
   - component: {fileID: 8571849964550229777}
   - component: {fileID: 4488163336863887604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570178808326187983}
   - component: {fileID: 8880947681197335568}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DriveWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 4258634221381668050}
   - component: {fileID: 7439568329120984808}
   - component: {fileID: 7333455033004612169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 7995777108336737659}
   - component: {fileID: 9158963239654201167}
   - component: {fileID: 1259225653203991550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4710353304014732409}
   - component: {fileID: 8518157418162256023}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 2904590825286131050}
   - component: {fileID: 6002870278395298369}
   - component: {fileID: 7057458597352592106}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 4178875132529821034}
   - component: {fileID: 8123431751021700699}
   - component: {fileID: 1131562400019449480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 9180060126145818862}
   - component: {fileID: 2065992385811818278}
   - component: {fileID: 3914092392024817966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4984431992948377112}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0f89849f803f81c439ee5eb43b0b0f15, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -815,7 +815,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4984431992948377112}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0f89849f803f81c439ee5eb43b0b0f15, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -827,8 +827,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.78, y: 0.46486914, z: 3}
-  m_Center: {x: 0, y: 1.3075655, z: -6.97409e-15}
+  m_Size: {x: 1.78, y: 0.51584065, z: 3}
+  m_Center: {x: 0, y: 1.2820797, z: 7.784463e-15}
 --- !u!1 &5521952513867549804
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 7712523609319519877}
   - component: {fileID: 7276653131873515623}
   - component: {fileID: 9202933600495082420}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tensioner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 2076565744659978298}
   - component: {fileID: 6269907444544895384}
   - component: {fileID: 7054497280956661224}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050888427824449730}
   - component: {fileID: 66072299864505448}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2219481630070578884}
   - component: {fileID: 6659066565606074627}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 7621681227891585173}
   - component: {fileID: 6743786041506860414}
   - component: {fileID: 8175684045496316657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BarrelMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 3122077323589661969}
   - component: {fileID: 7806408331902024414}
   - component: {fileID: 4578866537470798214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BarrelMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 1490296827771151571}
   - component: {fileID: 3094691137345143825}
   - component: {fileID: 830842051660858798}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1362,7 +1362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4138791326444593016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrackL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1399,7 +1399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3798598632895212586}
   - component: {fileID: 5671649214385104314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 3146063926185537538}
   - component: {fileID: 1798799806991587416}
   - component: {fileID: 7631270557975175175}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 1898127815600966153}
   - component: {fileID: 845901273905965821}
   - component: {fileID: 3769371614945428545}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9184876343428661189}
   - component: {fileID: 1263363190836741040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SuspensionArm3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 7329382499268101233}
   - component: {fileID: 6462014283794778965}
   - component: {fileID: 2551822907190184441}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542013767957284989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1792,7 +1792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209926136225351887}
   - component: {fileID: 8061726573732890373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DriveWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1843,7 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3298326257632885815}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

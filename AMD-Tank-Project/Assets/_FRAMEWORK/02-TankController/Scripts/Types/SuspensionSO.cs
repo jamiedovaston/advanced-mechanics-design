@@ -12,4 +12,5 @@ public class SuspensionSO : ScriptableObject
 	public float MaximumSlope;
 	public float HullTraverseDegrees;
 	public float FrictionCoefficient;
+	public float WheelRotationSpeed;
 }
