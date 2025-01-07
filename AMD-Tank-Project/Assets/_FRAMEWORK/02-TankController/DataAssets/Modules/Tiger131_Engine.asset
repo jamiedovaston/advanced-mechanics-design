@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31834b5dc9411e740900ed47a988cd8a, type: 3}
   m_Name: Tiger131_Engine
   m_EditorClassIdentifier: 
+  BannerImage: {fileID: 2800000, guid: 5392319fd79d61640a9fa165da5bd8c0, type: 3}
   HorsePower: 650

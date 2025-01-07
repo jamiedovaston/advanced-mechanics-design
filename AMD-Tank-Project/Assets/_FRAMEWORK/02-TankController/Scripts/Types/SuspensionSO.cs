@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="SuspensionData", menuName = "DataObject/Tank/SuspensionData")]
-public class SuspensionSO : ScriptableObject
+public class SuspensionSO : TankBASESO
 {
 	public float WheelDiameter;
 	public float SuspensionDamper;
