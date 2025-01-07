@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb827a807065334fb4d82993e1994d7, type: 3}
   m_Name: Tiger131_Barrel
   m_EditorClassIdentifier: 
+  BannerImage: {fileID: 2800000, guid: 6104081d7f6c7ab41a78ca1098d74e6e, type: 3}
   Dispersion: 0.36
   AimingTime: 2.21
   MaxRange: 0

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14f8ffd3a98eaa49aca3cef8e93f228, type: 3}
   m_Name: Tiger131_APShell
   m_EditorClassIdentifier: 
+  BannerImage: {fileID: 2800000, guid: 0b3c041462b856048a517b97528ce654, type: 3}
   Damage: 0
   Velocity: 0

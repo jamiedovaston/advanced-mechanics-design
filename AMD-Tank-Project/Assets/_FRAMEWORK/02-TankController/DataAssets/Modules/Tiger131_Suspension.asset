@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565894c2efdd59d40ab93ebc095fa1d8, type: 3}
   m_Name: Tiger131_Suspension
   m_EditorClassIdentifier: 
+  BannerImage: {fileID: 2800000, guid: f62e7bbbc1c4a87439ab17e5cc5afd80, type: 3}
   WheelDiameter: 0.7
   SuspensionDamper: 10
   SuspensionStrength: 70
