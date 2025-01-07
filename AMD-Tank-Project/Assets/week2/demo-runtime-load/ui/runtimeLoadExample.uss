@@ -1,0 +1,40 @@
+#main {
+    background-color: rgb(60, 60, 60);
+    align-items: center;
+    justify-content: center;
+}
+
+#centre-box {
+    background-color: rgb(0, 0, 0);
+    width: 80%;
+    height: 80%;
+    padding-top: 21px;
+    padding-right: 21px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+}
+
+#header {
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    -unity-font-style: bold;
+}
+
+#description {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    white-space: normal;
+    text-overflow: clip;
+    padding-bottom: 18px;
+}
+
+#container {
+    background-color: rgba(103, 103, 103, 0);
+    min-height: 50px;
+    width: 100%;
+    border-top-width: 2px;
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(255, 255, 255, 0.5);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+}

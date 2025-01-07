@@ -1,0 +1,77 @@
+#main {
+    background-color: rgb(60, 60, 60);
+    align-items: center;
+    justify-content: center;
+}
+
+#centre-box {
+    background-color: rgb(0, 0, 0);
+    width: 80%;
+    height: 80%;
+    padding-top: 21px;
+    padding-right: 21px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+}
+
+#header {
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    -unity-font-style: bold;
+}
+
+#description {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    white-space: normal;
+    text-overflow: clip;
+    padding-bottom: 18px;
+}
+
+#container {
+    background-color: rgba(103, 103, 103, 0);
+    min-height: 50px;
+    width: 100%;
+    border-top-width: 2px;
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(255, 255, 255, 0.5);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+#dead-label {
+    color: rgb(255, 0, 0);
+    font-size: 74px;
+    -unity-font-style: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    transition-duration: 2s;
+    transition-property: opacity;
+    visibility: visible;
+    display: flex;
+    opacity: 0;
+}
+
+#hearts {
+    flex-direction: row;
+    padding-top: 10px;
+}
+
+.heart {
+    background-image: url("project://database/Assets/week2/demo-runtime-change/img/J_Ur_u.png?fileID=2800000&guid=78a16ef1d26e85a499fd31d95cd8d86f&type=3#J_Ur_u");
+    width: 35px;
+    height: 35px;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-circ;
+}
+
+.heart.removed {
+    opacity: 0;
+    translate: 0 97px;
+}
+
+#dead-label.active {
+    opacity: 1;
+}

@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/week2/demo-binding-converters/ui/bindingConverters.uss?fileID=7433441132597879392&amp;guid=2853d3582333f8f44b8a2f1b082475e4&amp;type=3#bindingConverters" />
+    <engine:VisualElement name="main" style="flex-grow: 1;">
+        <engine:Label text="Vectors example" name="title" />
+        <engine:Label text="Label" name="vector_a" />
+        <engine:Label text="Label" name="vector_b" />
+        <engine:Label text="Label" name="dot-prod-result" />
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,40 @@
+#cool-panel-main {
+    background-color: rgb(255, 79, 11);
+    border-top-width: 26px;
+    border-right-width: 26px;
+    border-bottom-width: 26px;
+    border-left-width: 26px;
+    border-left-color: rgba(0, 0, 0, 0.28);
+    border-right-color: rgba(0, 0, 0, 0.28);
+    border-top-color: rgba(0, 0, 0, 0.28);
+    border-bottom-color: rgba(0, 0, 0, 0.28);
+}
+
+#cool-h1 {
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=fcb27c894ca1cb74a8f347e04711ede0&type=3#NotInter-Regular");
+    font-size: 45px;
+    -unity-font-style: bold;
+    flex-grow: 0;
+    min-height: 50px;
+    text-overflow: clip;
+    color: rgb(255, 255, 255);
+}
+
+#cool-h2 {
+    flex-grow: 0;
+    -unity-text-align: upper-center;
+    -unity-font-style: bold;
+    font-size: 131px;
+    color: rgb(190, 255, 0);
+}
+
+#cool-button {
+}
+
+#text-container {
+    flex-grow: 1;
+}
+
+#cool-h1.right {
+    -unity-text-align: upper-right;
+}

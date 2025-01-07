@@ -37,7 +37,7 @@ public class Tank : Entity, IPossessable
             wheel.Init(_data, m_RB);
         }
 
-        m_TurretController.Init(_data);
+        m_TurretController.Init(_data, _rig);
     }
 
     public void Accelerate(float _inAccelerate)
@@ -90,6 +90,8 @@ public class Tank : Entity, IPossessable
             {
                 m_DriveWheels[i].SetSteer(m_InSteer);
             }
+
+            m_TurretController.SetRotationDirty();
 
             yield return null;
         }

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/week2/demo-runtime-load/ui/runtimeLoadExample.uss?fileID=7433441132597879392&amp;guid=6b85962783f554041911a973e52d54ad&amp;type=3#runtimeLoadExample" />
+    <ui:VisualElement name="main" style="flex-grow: 1;">
+        <ui:VisualElement name="centre-box">
+            <ui:Label text="Dynamic UXML loading example" name="header" />
+            <ui:Label text="In this example, press the Space bar to load and append a custom UXML tree in the UI (superCoolPanel.uxml)." name="description" />
+            <ui:ScrollView name="container" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

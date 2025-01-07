@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/week2/demo-runtime-uss-load/ui/darkMode.uss?fileID=7433441132597879392&amp;guid=f923fa2bfc7d4334e808008fe6bab9cf&amp;type=3#darkMode" />
+    <engine:VisualElement name="main" style="flex-grow: 1;">
+        <engine:Label text="Runtime USS loading example" name="header" class="label" />
+        <engine:Label text="In this example, two stylesheets are loaded depending on a value set through the inspector: either dark mode, or light mode. Press space to toggle between them!" name="description" class="label" />
+        <engine:Label text="Label" name="debug-label" class="label" />
+    </engine:VisualElement>
+</engine:UXML>

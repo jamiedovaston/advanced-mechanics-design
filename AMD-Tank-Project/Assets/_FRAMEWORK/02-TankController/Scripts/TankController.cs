@@ -101,10 +101,9 @@ public class TankController : MonoBehaviour
 
 	private void Handle_ZoomPerformed(InputAction.CallbackContext context)
 	{
-		// FRAMEWORK IMPLEMENTATION
-		// m_Rig.ChangeCameraDistance(context.ReadValue<float>());
 		m_Tank?.Zoom();
-	}
+        m_Rig.ChangeCameraDistance(context.ReadValue<float>());
+    }
 
     public IPossessable GetPossessed()
     {

@@ -42,8 +42,8 @@ public class Suspension : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position, -transform.up.normalized, out hit, m_SpringRestingDistance, m_Data.SuspensionLayermask))
 		{
-			m_Wheel.position = hit.point + (Vector3.up * (m_Data.WheelDiameter / 2f));
-			Vector3 springDir = m_Wheel.up;
+			m_Wheel.position = hit.point + (transform.up.normalized * (m_Data.WheelDiameter / 2f));
+			Vector3 springDir = transform.up;
 			Vector3 tyreWorldVel = m_RB.GetPointVelocity(m_Wheel.position);
 
 			float offset = m_SpringRestingDistance - hit.distance;
@@ -52,29 +52,29 @@ public class Suspension : MonoBehaviour
 			float slipForce = slipVel * -0.9f;
 			float force = (offset * m_Data.SuspensionStrength) - (vel * m_Data.SuspensionDamper);
 			m_RB.AddForceAtPosition((springDir * force) + (transform.right * slipForce), m_Wheel.position, ForceMode.Acceleration);
-		}
 
-		if (m_Grounded != hit.collider)
-		{
-			m_Grounded = hit.collider;
-			OnGroundedChanged?.Invoke(m_Grounded);
-		}
-
-        // Friction
-        if (m_Grounded)
-        {
             float floorAngle = Vector3.Angle(hit.normal, Vector3.up);
             if (floorAngle < m_Data.MaximumSlope)
             {
                 float objectDownForce = Mathf.Abs(Physics.gravity.y) * m_RB.mass * Mathf.Cos(floorAngle * Mathf.Deg2Rad);
                 float frictionForce = m_Data.FrictionCoefficient * objectDownForce;
-				
+
                 Vector3 lateralVelocity = Vector3.ProjectOnPlane(m_RB.linearVelocity, hit.normal);
                 Vector3 friction = -lateralVelocity.normalized * frictionForce;
 
                 m_RB?.AddForceAtPosition(friction, m_Wheel.position, ForceMode.Force);
             }
         }
+		else
+		{
+            m_Wheel.position = transform.position + (-transform.up.normalized * m_SpringRestingDistance) + (transform.up.normalized * (m_Data.WheelDiameter / 2f));
+        }
+		
+		if (m_Grounded != hit.collider)
+		{
+			m_Grounded = hit.collider;
+			OnGroundedChanged?.Invoke(m_Grounded);
+		}
 
         //to stop the tank from sliding you also need to conssider how much velocity is in the left/right direction and counter it here
     }

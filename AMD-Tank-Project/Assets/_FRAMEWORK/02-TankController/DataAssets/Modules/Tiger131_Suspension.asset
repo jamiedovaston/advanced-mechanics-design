@@ -22,3 +22,4 @@ MonoBehaviour:
   MaximumSlope: 30
   HullTraverseDegrees: 27
   FrictionCoefficient: 0.1
+  WheelRotationSpeed: 100

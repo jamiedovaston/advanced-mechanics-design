@@ -1,0 +1,31 @@
+.field-label {
+    -unity-font-style: bold;
+    border-right-width: 2px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    padding-right: 8px;
+    margin-right: 12px;
+}
+
+#field {
+}
+
+#main {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding-top: 14px;
+    padding-right: 14px;
+    padding-bottom: 14px;
+    padding-left: 14px;
+}
+
+#title {
+    font-size: 20px;
+    -unity-font-style: bold;
+}
+
+#unity-text-input {
+    background-color: rgba(0, 0, 0, 0.59);
+}

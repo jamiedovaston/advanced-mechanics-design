@@ -839,7 +839,7 @@ MonoBehaviour:
   m_CameraMount: {fileID: 114474679}
   m_Camera: {fileID: 880163267}
   m_Data: {fileID: 11400000, guid: 0cbe95f8684787643be0124fc6b8eaf0, type: 2}
-  m_TargetOffset: {x: 0, y: 4, z: 0}
+  m_TargetOffset: {x: 0, y: 2.5, z: 0}
 --- !u!1 &739941655
 GameObject:
   m_ObjectHideFlags: 0

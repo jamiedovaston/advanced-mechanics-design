@@ -11,9 +11,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9542f2219ac333940b4e35e9545e2f6f, type: 3}
   m_Name: Tiger131_Turret
-  m_EditorClassIdentifier: 
-  BannerImage: {fileID: 2800000, guid: 2bc2dc2b973681647a23ed2ce2300e23, type: 3}
-  TurretTraverseSpeed: 21
+  m_EditorClassIdentifier:
+  TurretTraverseSpeed: 123
   BarrelTraverseSpeed: 35
   DepressionLimit: 8
   ElevationLimit: 15

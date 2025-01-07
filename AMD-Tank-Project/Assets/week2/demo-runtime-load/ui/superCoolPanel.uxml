@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/week2/demo-runtime-load/ui/superCoolPanel.uss?fileID=7433441132597879392&amp;guid=fc26398578087d94687ae95183500dfa&amp;type=3#superCoolPanel" />
+    <engine:VisualElement name="cool-panel-main" style="flex-grow: 1;">
+        <engine:VisualElement name="text-container">
+            <engine:Label text="This is the " name="cool-h1" style="height: 26px;" />
+            <engine:Label text="cool&#10;" name="cool-h2" />
+            <engine:Label text="panel" name="cool-h1" class="right" style="height: 26px;" />
+        </engine:VisualElement>
+        <engine:Button text="Keep the change" name="cool-button" />
+    </engine:VisualElement>
+</engine:UXML>
